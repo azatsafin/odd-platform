@@ -23,7 +23,6 @@ import reactor.core.publisher.Mono;
 @Service
 @RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
-
     private final ReactiveTagRepository reactiveTagRepository;
     private final TagMapper tagMapper;
     private final ReactiveSearchEntrypointRepository reactiveSearchEntrypointRepository;
@@ -32,8 +31,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public Flux<Tag> bulkCreate(final List<TagFormData> tags) {
         final List<TagPojo> pojos = tags.stream().map(tagMapper::mapToPojo).toList();
-        return reactiveTagRepository.bulkCreate(pojos)
-            .map(tagMapper::mapToTag);
+        return reactiveTagRepository.bulkCreate(pojos).map(tagMapper::mapToTag);
     }
 
     @Override
@@ -97,7 +95,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Flux<TagToDataEntityPojo> deleteRelationsWithDataEntityExcept(final long dataEntityId,
-                                                                   final Set<String> tagsToKeep) {
+                                                                         final Set<String> tagsToKeep) {
         return reactiveTagRepository.listByDataEntityId(dataEntityId)
             .collectList()
             .flatMapMany(currentTags -> {

@@ -12,7 +12,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface TagService {
-
     Flux<Tag> bulkCreate(final List<TagFormData> tags);
 
     Mono<Tag> update(final long tagId, final TagFormData formData);

@@ -15,7 +15,6 @@ import org.opendatadiscovery.oddplatform.utils.Page;
 
 @Mapper(config = MapperConfig.class)
 public interface TagMapper {
-
     TagPojo mapToPojo(final TagFormData formData);
 
     TagPojo applyToPojo(final TagFormData formData, @MappingTarget final TagPojo pojo);

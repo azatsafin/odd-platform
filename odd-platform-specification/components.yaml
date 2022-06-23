@@ -91,6 +91,8 @@ components:
           format: int64
         name:
           type: string
+        is_external:
+          type: boolean
         important:
           type: boolean
         usedCount:
@@ -1231,6 +1233,8 @@ components:
         id:
           type: integer
           format: int64
+        is_external:
+          type: boolean
         name:
           type: string
       required:
